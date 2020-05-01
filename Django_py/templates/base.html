@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <!-- //Meta tags Keywords -->
+    <title>{% block title %} {% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+\
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700"
+          rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900"
+          rel="stylesheet">
+
+</head>
+<body onload="timer()">
+    Успейте посмотреть фильмы!  <span id="count">-1</span>
+    <script>
+        var counter = 0;
+
+        function timer() {
+            counter++;
+            if (counter === 26 || counter ===32)
+                alert("Продолжайте искать фильмы!");
+            else if (counter === 46)
+                    alert("Не забудьте оставить отзыв");
+            document.getElementById("count").innerHTML = counter;
+            setTimeout("timer()", 1000)
+        }
+
+    </script>
+
+<div id="page" class="page">
+    <div class="main-banner s7 {% block header %}  {% endblock header %}" id="home">
+        {% include 'include/header.html' %}
+    </div>
+    {% block content %}
+    {% endblock content %}
+</div>
+<script src="{% static 'admin/js/scripts.js' %}"></script>
+<script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
+</body>
+</html>
